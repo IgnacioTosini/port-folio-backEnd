@@ -11,7 +11,7 @@ const PORT = process.env.BACKEND_PORT || 5000;
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://port-folio-front-end-six.vercel.app',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
 }));
