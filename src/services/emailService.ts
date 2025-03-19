@@ -1,15 +1,18 @@
-import { EmailData } from './../types/index';
-import transporter from "../utils/nodemailter";
-
+import { EmailData } from '../types';
+import transporter from '../utils/nodemailer';
 
 export class EmailService {
     static async sendGenericEmail(user: EmailData) {
         const mailOptions = {
-            from: user.email,
+            from: `Portfolio <${process.env.GMAIL_USER}>`,
             to: process.env.GMAIL_USER,
-            subject: 'Nuevo mensaje desde tu portafolio',
-            html: `<p>Hola ${user.name},</p>
-                <p>${user.message}</p>`,
+            subject: `Nuevo mensaje de ${user.name}`,
+            html: `
+                <p><strong>Nombre:</strong> ${user.name}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>Mensaje:</strong></p>
+                <p>${user.message}</p>
+            `,
         };
 
         try {

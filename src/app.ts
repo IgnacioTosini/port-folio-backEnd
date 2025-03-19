@@ -10,12 +10,10 @@ const PORT = process.env.BACKEND_PORT || 5000;
 
 // Middleware
 app.use(express.json());
-
-// Configuración de CORS
 app.use(cors({
-    origin: 'http://localhost:5173', // Cambia esto si tu frontend está en otro dominio o puerto
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
-    allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
 }));
 
 // Rutas

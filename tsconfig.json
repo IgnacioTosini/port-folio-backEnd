@@ -1,13 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES2020", // Versión de JavaScript a generar
-    "module": "commonjs", // Sistema de módulos
-    "strict": true, // Habilita todas las comprobaciones estrictas
-    "esModuleInterop": true, // Habilita la interoperabilidad con módulos CommonJS
-    "skipLibCheck": true, // Omite la comprobación de tipos en archivos de definición
-    "outDir": "./dist", // Carpeta de salida para los archivos compilados
-    "rootDir": "./src" // Carpeta raíz de los archivos fuente
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "lib": [
+          "esnext",
+          "dom"
+      ],
+      "target": "ESNext",
+      "moduleResolution": "NodeNext",
+      "module": "NodeNext",
+      "strict": false,
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "declaration": true,
+      "skipLibCheck": true
   },
-  "include": ["src/**/*"], // Archivos a incluir en la compilación
-  "exclude": ["node_modules", "dist"] // Archivos y carpetas a excluir
+  "include": [
+      "src/**/*.ts"
+  ]
 }

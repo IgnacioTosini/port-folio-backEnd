@@ -1,7 +1,7 @@
 import express from 'express';
 import { body } from 'express-validator';
-import { validateRequest } from '../middlewares/validateRequests';
-import { sendEmail } from '../controllers/emailController';
+import { handleInputErrors } from '../middlewares/validateRequests';
+import { EmailController } from '../controllers/emailController';
 
 const router = express.Router();
 
@@ -9,11 +9,11 @@ router.post(
     '/send-email',
     [
         body('name').notEmpty().withMessage('El nombre es requerido'),
-        body('email').isEmail().withMessage('Email no válido'),
+        body('email').isEmail().withMessage('El email no es válido'),
         body('message').notEmpty().withMessage('El mensaje es requerido'),
     ],
-    validateRequest,
-    sendEmail
+    handleInputErrors,
+    EmailController.sendEmail
 );
 
 export default router;
