@@ -11,7 +11,18 @@ const PORT = process.env.BACKEND_PORT || 5000;
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: 'https://port-folio-front-end-six.vercel.app',
+    origin: (origin, callback) => {
+        const allowedOrigins = [
+            'https://port-folio-front-end-six.vercel.app', // Producción
+            'http://localhost:5173' // Desarrollo
+        ];
+
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true); // Permitir acceso
+        } else {
+            callback(new Error('No permitido por CORS')); // Bloquear acceso
+        }
+    },
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
 }));
